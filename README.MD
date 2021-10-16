@@ -31,13 +31,15 @@ And you are done, every hour the python app will be execute it and you will get 
 
 ## Possible problems
 To check if something have go wrong, got to var/mail. And open a file that probably has the name of your mac.
-- It may happen that appears "bash: run.sh: Operation not permitted". Try to move the project to another folder like Users/your_mac_name. This happens because in newer versions of MacOS, there are some folders where crontab does not have access. 
+- It may happen that appears `bash: run.sh: Operation not permitted`. Try to move the project to another folder like Users/your_mac_name. This happens because in newer versions of MacOS, there are some folders where crontab does not have access. 
   If you prefer to place the project on this kind of places, you can refer to this [post](https://blog.bejarano.io/fixing-cron-jobs-in-mojave/) in order to do it. The solution is basically giving Full Disk Access to crontab. However, I don't like this solution, that is why I recommend moving the projec to another folder
 
 # Known issues
 - Sometimes it appears the error: 
+```
 Traceback (most recent call last):
   File "src/main.py", line 10, in <module>
     Notifier.notify(quote_text, title=quote_author + " once said:", group=os.getpid(), sound="Submarine")#, ignoreDnD=False)
 TypeError: unsupported operand type(s) for +: 'NoneType' and 'str'
+```
 It's not solved yet, but probably the error is because the variable quote_author is empty for some reason.
