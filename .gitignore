@@ -1,0 +1,12 @@
+# Mac files
+.ds_store
+
+# pycache folder
+*/__pycache__
+/__pycache__
+
+# virtual environment folder
+/venv
+
+# log file
+log.txt
