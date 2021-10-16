@@ -1,10 +1,11 @@
 import requests
 import random
 from logger import Logger
+from validator import DataValidator
 
 class apiReader:
 
-    def __init__(self):
+    def __init__(self, default_author='Unknown'):
         # Max size of the quote to be displayed correctly in the notifications
         self.max_size_quote = 84 # By prueba and error, I've found that 84 is the max number of characters to be displayed correctly in the notifications
 
@@ -21,6 +22,9 @@ class apiReader:
 
         # Initializing the logger
         self.logger = Logger()
+
+        # Data validator
+        self.validator = DataValidator(default_author)
 
     def readQuotesFromAPI(self, debug = False):
         # Read quotes from API
@@ -56,8 +60,8 @@ class apiReader:
 
                 # Choose the quote
                 quote = data[seed]
-                self.quote_text = quote["text"]
-                self.quote_author = quote["author"]
-                if (len(self.quote_text) <= self.max_size_quote):
+                success, self.quote_text, self.quote_author = self.validator.validateData(quote["text"], quote["author"])
+
+                if (success & len(self.quote_text) <= self.max_size_quote):
                     break
         return self.quote_text, self.quote_author
