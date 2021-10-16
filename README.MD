@@ -2,7 +2,9 @@
 It sends notifications of inspirational quotes to your Mac to get you motivated and inspired. You can use setup a cronjob in order to automate the execution of the script. That way, you will get inspirational quotes during the day.
 If you want to check how it works, please check this [post](https://www.devsfocus.com/post/inspirational-quotes-notifications-in-macos) in the blog [DevsFocus](https://www.devsfocus.com/)
 
-![Notification example](https://static.wixstatic.com/media/2c7963_941ce98061644edaad0cb6dd0a3acf3e~mv2.jpg/v1/fill/w_598,h_127,al_c,q_90/2c7963_941ce98061644edaad0cb6dd0a3acf3e~mv2.webp)
+<p align="center">
+  <img src="https://static.wixstatic.com/media/2c7963_941ce98061644edaad0cb6dd0a3acf3e~mv2.jpg/v1/fill/w_598,h_127,al_c,q_90/2c7963_941ce98061644edaad0cb6dd0a3acf3e~mv2.webp" alt="Notification example"/>
+</p>
 
 Also, I have to thank you to the developer of the api: https://type.fit/api/quotes. It has been key in this project.
 
