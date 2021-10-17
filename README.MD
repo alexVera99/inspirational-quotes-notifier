@@ -16,14 +16,14 @@ Also, I have to thank the developer of the API: https://type.fit/api/quotes. It 
 # Set up
 To facilitate its use, I have built a bash script called `setup.sh`. This will install python virtualenv to create a virtual environment where we will install everything we need. Check the file `requirements.txt` to know which python libraries we are using in the project.
 
-Then, to prepare everything to execute the app, simply type in your terminal
+To use it, simply type in your terminal
 
 `bash setup.sh`
 
 # Executing
 You can run the `main.py` file as any other python file. Also, you can use the bash script `run.sh`, which executes the `main.py` file using the virtual environment setup.
 
-To use it, simply use
+To use it, simply type in your terminal
 
 `bash run.sh`
 
