@@ -18,7 +18,7 @@ class ApiReader:
         # Initializing the status code
         self.status_code = 0
 
-        # Default Inspiration Quote
+        # Default Inspiration Quote when no Internet connection
         self.quote_text = "Play wisely the cards life gave you."
         self.quote_author = "Yourself"
 
