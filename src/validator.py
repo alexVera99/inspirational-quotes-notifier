@@ -3,14 +3,14 @@ class DataValidator:
         self.default_author = default_author
 
     def validateData(self, quote, author):
+        success = True
         if quote == None:
             success = False
             quote = ''
             author = ''
-            return success, quote, author
+
         elif author == None:
-            success = True
-            return success, quote, self.default_author
+            author = self.default_author
         
-        return True, quote, author
+        return success, quote, author
         
