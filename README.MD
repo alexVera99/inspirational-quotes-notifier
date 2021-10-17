@@ -27,7 +27,7 @@ To use it, simply type in your terminal
 
 `bash run.sh`
 
-The main reason for doing this is to ease the execution of the program if you want to use a cron.
+The main reason for doing this is to ease the execution of the program if you want to use cron.
 
 # Automate its execution every hour
 The coolest part of the project is automating the execution of the program. That way, you will have inspirational quotes notifications every N time.
