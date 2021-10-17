@@ -1,8 +1,8 @@
 import apiReader
 from pync import Notifier
 import os
-default_author = 'Somebody'
-ar = apiReader.apiReader(default_author)
+default_author = 'Someone'
+ar = apiReader.ApiReader(default_author)
 
 quote_text, quote_author = ar.getOneQuote(True)
 

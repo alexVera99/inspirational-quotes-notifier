@@ -5,7 +5,7 @@ from requests import api
 from logger import Logger
 from validator import DataValidator
 
-class apiReader:
+class ApiReader:
 
     def __init__(self, default_author='Unknown', api_url = "https://type.fit/api/quotes"):
         # Max size of the quote to be displayed correctly in the notifications
