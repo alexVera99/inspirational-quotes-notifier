@@ -1,11 +1,13 @@
 import requests
 import random
+
+from requests import api
 from logger import Logger
 from validator import DataValidator
 
 class apiReader:
 
-    def __init__(self, default_author='Unknown'):
+    def __init__(self, default_author='Unknown', api_url = "https://type.fit/api/quotes"):
         # Max size of the quote to be displayed correctly in the notifications
         self.max_size_quote = 84 # By prueba and error, I've found that 84 is the max number of characters to be displayed correctly in the notifications
 
@@ -26,13 +28,16 @@ class apiReader:
         # Data validator
         self.validator = DataValidator(default_author)
 
+        # API url
+        self.api_url = api_url
+
     def readQuotesFromAPI(self, debug = False):
         # Read quotes from API
         try:
             # Retrying the request until a 200 status code is obtained or max number of requests is achieved
             while(self.status_code!=200 or self.num_requests == self.max_num_requests):
                 # Read quotes from API
-                r = requests.get("https://type.fit/api/quotes")
+                r = requests.get(self.api_url)
                 self.status_code = r.status_code
                 self.num_requests += 1
                 if debug:
