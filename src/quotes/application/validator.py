@@ -2,7 +2,7 @@ class DataValidator:
     def __init__(self, default_author='Unknown'):
         self.default_author = default_author
 
-    def validateData(self, quote, author):
+    def validate(self, quote, author):
         success = True
         if quote == None:
             success = False

@@ -4,7 +4,7 @@ import random
 from requests import RequestException
 
 from logger import Logger
-from validator import DataValidator
+from quotes.application.validator import DataValidator
 
 class ApiReader:
     DEFAULT_QUOTE_TEXT = "Play wisely the cards life gave you."
@@ -66,7 +66,7 @@ class ApiReader:
 
             # Choose the quote
             quote = data[seed]
-            _, quote_text, quote_author = self.validator.validateData(quote["text"], quote["author"])
+            _, quote_text, quote_author = self.validator.validate(quote["text"], quote["author"])
 
             if len(quote_text) <= self.max_size_quote:
                 return quote_text, quote_author
