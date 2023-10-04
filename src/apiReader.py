@@ -1,17 +1,16 @@
-import requests
 import random
 
-from requests import RequestException
-
+import requests
 from logger import Logger
 from quotes.application.validator import DataValidator
+from requests import RequestException
 
 
 class ApiReader:
     DEFAULT_QUOTE_TEXT = "Play wisely the cards life gave you."
     DEFAULT_QUOTE_AUTHOR = "Yourself"
 
-    def __init__(self, default_author='Unknown', api_url="https://type.fit/api/quotes"):
+    def __init__(self, default_author="Unknown", api_url="https://type.fit/api/quotes"):
         # Max size of the quote to be displayed correctly in the notifications
         self.max_size_quote = 84
 
@@ -66,7 +65,9 @@ class ApiReader:
 
             # Choose the quote
             quote = data[seed]
-            _, quote_text, quote_author = self.validator.validate(quote["text"], quote["author"])
+            _, quote_text, quote_author = self.validator.validate(
+                quote["text"], quote["author"]
+            )
 
             if len(quote_text) <= self.max_size_quote:
                 return quote_text, quote_author

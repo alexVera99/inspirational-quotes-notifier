@@ -5,11 +5,11 @@ class Logger:
     filename = "log.txt"
 
     def write_to_log_file(self, message):
-        my_file = open(self.filename, 'a')
+        my_file = open(self.filename, "a")
 
         today_datetime = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
         message = today_datetime + ":\n" + message
-        my_file.write(message + '\n\n')
+        my_file.write(message + "\n\n")
 
         my_file.close()
 

@@ -1,5 +1,5 @@
 # Description
-It sends notifications of inspirational quotes to your Mac to get you motivated and inspired. 
+It sends notifications of inspirational quotes to your Mac to get you motivated and inspired.
 
 You can set up a cronjob to automate the execution of the app. That way, you will get inspirational quotes during your day.
 
@@ -35,7 +35,7 @@ We can achieve this by using cron. You can refer to the [post](https://www.devsf
 1. Open your terminal
 2. Type: `crontab -e`
 3. Press the *i* key to be able to start typing
-4. If you want to execute it every hour, type the following: 
+4. If you want to execute it every hour, type the following:
 `0 * * * * path_dir && bash run.sh`
   where *path_dir* is the directory where our script is located
 5. Hit the *ESC* key
@@ -46,6 +46,6 @@ And you are done! You will get inspirational quote notifications every hour.
 
 ## Possible problems
 To check if something has gone wrong, go to `var/mail`. And open a file that probably has the name of your Mac.
-- It may appear `bash: run.sh: Operation not permitted`. Try to move the project to another folder like `Users/your_mac_name`. This happens because, in newer versions of macOS, there are some folders where cron does not have access. 
-  
+- It may appear `bash: run.sh: Operation not permitted`. Try to move the project to another folder like `Users/your_mac_name`. This happens because, in newer versions of macOS, there are some folders where cron does not have access.
+
   If you prefer to locate the project in this kind of folder, you can refer to this [post](https://blog.bejarano.io/fixing-cron-jobs-in-mojave/). The solution is basically giving Full Disk Access to cron. However, I don't like this solution since it may not be secure. That is why I recommend moving the project to another folder.
