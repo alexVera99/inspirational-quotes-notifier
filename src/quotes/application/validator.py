@@ -1,15 +1,19 @@
+from quotes.domain.quote import Quote
+
+
 class DataValidator:
     def __init__(self, default_author="Unknown"):
         self.default_author = default_author
 
-    def validate(self, quote, author):
-        success = True
-        if quote is None:
-            success = False
-            quote = ""
+    def validate(self, quote: Quote) -> Quote:
+        text: str = quote.text
+        author: str = quote.author
+
+        if text is None:
+            text = ""
             author = ""
 
-        elif author is None:
+        if author is None:
             author = self.default_author
 
-        return success, quote, author
+        return Quote(author, text)
