@@ -2,8 +2,7 @@
 .ds_store
 
 # pycache folder
-*/__pycache__
-/__pycache__
+__pycache__
 
 # virtual environment folder
 /venv
