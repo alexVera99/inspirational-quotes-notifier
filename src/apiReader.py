@@ -1,7 +1,8 @@
 import requests
 import random
 
-from requests import api
+from requests import RequestException
+
 from logger import Logger
 from validator import DataValidator
 
@@ -13,7 +14,6 @@ class ApiReader:
 
         # Setting the max number of requests
         self.max_num_requests = 10
-        self.num_requests = 0
 
         # Initializing the status code
         self.status_code = 0
@@ -31,26 +31,24 @@ class ApiReader:
         # API url
         self.api_url = api_url
 
-    def readQuotesFromAPI(self, debug = False):
-        # Read quotes from API
-        try:
-            # Retrying the request until a 200 status code is obtained or max number of requests is achieved
-            while(self.status_code!=200 or self.num_requests == self.max_num_requests):
-                # Read quotes from API
+    def readQuotesFromAPI(self, debug: bool = False):
+        for num_requests in range(1, self.max_num_requests + 1):
+            try:
                 r = requests.get(self.api_url)
                 self.status_code = r.status_code
-                self.num_requests += 1
+                if self.status_code == 200:
+                    return r
+
                 if debug:
-                    # Debug variables. Estaría guay q esto se printará en un log file
-                    message_log = "Number of requests: " + str(self.num_requests) + "\n"
+                    message_log = "Number of requests: " + str(num_requests) + "\n"
                     message_log += "Status code: " + str(self.status_code)
                     self.logger.writeToLogFile(message_log)
-                
-        except:
-            self.status_code = -1 # -1 means no internet conection or some error ocurr 
-            return None
-        
-        return r
+
+            except RequestException:
+                self.status_code = -1
+
+        return None
+
 
     def getOneQuote(self, debug = False):
         r = self.readQuotesFromAPI(debug)
