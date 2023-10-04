@@ -1,8 +1,8 @@
 from unittest.mock import Mock
 from unittest.mock import patch
 
-from api_reader import ApiReader
-from quotes.domain.quote import Quote
+from inspi_quote_notifier.api_reader import ApiReader
+from inspi_quote_notifier.quotes.domain.quote import Quote
 from requests import RequestException
 
 API_URL = "http://www.test.invalid"

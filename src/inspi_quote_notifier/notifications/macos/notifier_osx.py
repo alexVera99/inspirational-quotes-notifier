@@ -1,8 +1,8 @@
 import os
 
-from notifications.notifier import Notifier
+from inspi_quote_notifier.notifications.notifier import Notifier
+from inspi_quote_notifier.quotes.domain.quote import Quote
 from pync import Notifier as pync_notifier
-from quotes.domain.quote import Quote
 
 
 class NotifierOSX(Notifier):

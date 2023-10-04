@@ -2,9 +2,9 @@ import random
 from typing import Optional
 
 import requests
-from logger import Logger
-from quotes.application.validator import DataValidator
-from quotes.domain.quote import Quote
+from inspi_quote_notifier.logger import Logger
+from inspi_quote_notifier.quotes.application.validator import DataValidator
+from inspi_quote_notifier.quotes.domain.quote import Quote
 from requests import RequestException
 
 

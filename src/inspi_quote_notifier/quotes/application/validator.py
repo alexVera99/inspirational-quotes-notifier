@@ -1,4 +1,4 @@
-from quotes.domain.quote import Quote
+from inspi_quote_notifier.quotes.domain.quote import Quote
 
 
 class DataValidator:

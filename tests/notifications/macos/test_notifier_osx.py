@@ -2,9 +2,8 @@ import os
 from unittest.mock import Mock
 from unittest.mock import patch
 
-from quotes.domain.quote import Quote
-
-from src.notifications.macos.notifier_osx import NotifierOSX
+from inspi_quote_notifier.notifications.macos.notifier_osx import NotifierOSX
+from inspi_quote_notifier.quotes.domain.quote import Quote
 
 
 @patch("pync.Notifier.notify")
