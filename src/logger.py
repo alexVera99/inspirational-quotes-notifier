@@ -1,10 +1,11 @@
 from datetime import datetime
 
+
 class Logger:
     filename = "log.txt"
 
-    def writeToLogFile(self, message):
-        my_file = open(self.filename,'a')
+    def write_to_log_file(self, message):
+        my_file = open(self.filename, 'a')
 
         today_datetime = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
         message = today_datetime + ":\n" + message
@@ -16,7 +17,7 @@ class Logger:
 def main():
     logger = Logger()
 
-    logger.writeToLogFile("Mum! I'm writing to a file :PP")
+    logger.write_to_log_file("Mum! I'm writing to a file :PP")
 
 
 if __name__ == "__main__":
