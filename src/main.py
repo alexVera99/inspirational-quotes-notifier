@@ -1,10 +1,10 @@
 import os
 
-import apiReader
+from api_reader import ApiReader
 from pync import Notifier
 
 default_author = "Someone"
-ar = apiReader.ApiReader(default_author)
+ar = ApiReader(default_author)
 
 quote_text, quote_author = ar.get_one_quote(True)
 
