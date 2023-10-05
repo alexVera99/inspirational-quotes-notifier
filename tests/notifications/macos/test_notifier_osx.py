@@ -4,7 +4,7 @@ from unittest.mock import Mock
 from inspi_quote_notifier.quotes.domain.quote import Quote
 
 
-def test_notify(notifier_osx: Mock, mock_pync_notifier):
+def test_notify(notifier_osx: Mock, mock_pync_notify):
     author = "author"
     text = "text"
     quote = Quote(author, text)
@@ -13,7 +13,7 @@ def test_notify(notifier_osx: Mock, mock_pync_notifier):
 
     notifier_osx.notify(quote)
 
-    mock_pync_notifier.assert_called_once_with(
+    mock_pync_notify.assert_called_once_with(
         quote.text,
         title=expected_notification_title,
         group=ANY,
