@@ -1,0 +1,17 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "inspi_quote_notifier"
+version = "0.0.1"
+authors = [
+  { name="Alexander Vera", email="alexanderjoel.vera99@gmail.com" }
+]
+description = "Inspirational quotes notifier"
+readme = "README.md"
+requires-python = ">=3.9.13"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]

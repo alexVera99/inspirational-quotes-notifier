@@ -13,3 +13,6 @@ log.txt
 .vscode
 
 *.todo
+
+# pyenv
+.python-version
