@@ -14,7 +14,11 @@ class ApiReader:
 
     DEFAULT_QUOTE = Quote(DEFAULT_QUOTE_AUTHOR, DEFAULT_QUOTE_TEXT)
 
-    def __init__(self, default_author="Unknown", api_url="https://type.fit/api/quotes"):
+    def __init__(
+        self,
+        default_author: str = "Unknown",
+        api_url: str = "https://type.fit/api/quotes",
+    ) -> None:
         # Max size of the quote to be displayed correctly in the notifications
         self.max_size_quote = 84
 
@@ -32,7 +36,7 @@ class ApiReader:
         # API url
         self.api_url = api_url
 
-    def get_one_quote(self, debug=False) -> Quote:
+    def get_one_quote(self, debug: bool = False) -> Quote:
         quotes = self.read_quotes_from_api(debug)
 
         if quotes is None:
@@ -54,7 +58,7 @@ class ApiReader:
 
         if debug:
             self.logger.write_to_log_file(
-                "Could not obtain a proper quote from the" "ones provided by the API"
+                "Could not obtain a proper quote from the ones provided by the API"
             )
 
         return ApiReader.DEFAULT_QUOTE

@@ -2,7 +2,7 @@ from inspi_quote_notifier.quotes.domain.quote import Quote
 
 
 class DataValidator:
-    def __init__(self, default_author="Unknown"):
+    def __init__(self, default_author: str = "Unknown"):
         self.default_author = default_author
 
     def validate(self, quote: Quote) -> Quote:
