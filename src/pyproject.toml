@@ -15,3 +15,6 @@ classifiers = [
     "Programming Language :: Python :: 3",
     "Operating System :: OS Independent",
 ]
+
+[project.scripts]
+inspi_notifier = "inspi_quote_notifier.main:main"
