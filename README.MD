@@ -13,6 +13,13 @@ Also, I have to thank the developer of the API: https://type.fit/api/quotes. It 
 
 **Important!** This only is supported for macOS. Mainly because of the notification library. In the future, it will support Windows too. However, if you want to do it, I will be more than happy to merge your code :)
 
+# MacOS permissions
+In MacOS, you need to give permissions to `terminal-notifier` to be able
+receive the notifications from the application.
+<p align="center">
+  <img src="./images/mac-permissions.png" alt="MacOS permissions"/>
+</p>
+
 # Set up
 To facilitate its use, I have built a bash script called `setup.sh`. This will install python virtualenv to create a virtual environment where we will install everything we need. Check the file `requirements.txt` to know which python libraries we are using in the project.
 
