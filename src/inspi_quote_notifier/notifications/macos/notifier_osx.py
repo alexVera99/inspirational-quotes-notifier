@@ -6,7 +6,8 @@ from pync import notify
 
 
 class NotifierOSX(Notifier):
-    sound: str = "Submarine"
+    def __init__(self) -> None:
+        self.sound = "Submarine"
 
     def notify(self, quote: Quote) -> None:
         title = quote.author + " once said:"
