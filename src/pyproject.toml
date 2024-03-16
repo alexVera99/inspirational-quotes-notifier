@@ -6,7 +6,7 @@ build-backend = "hatchling.build"
 name = "inspi_quote_notifier"
 version = "0.0.1"
 authors = [
-  { name="Alexander Vera", email="alexanderjoel.vera99@gmail.com" }
+  { name="Alexander Vera" }
 ]
 description = "Inspirational quotes notifier"
 readme = "README.md"
@@ -14,6 +14,17 @@ requires-python = ">=3.9.13"
 classifiers = [
     "Programming Language :: Python :: 3",
     "Operating System :: OS Independent",
+]
+dependencies = [
+    "pync==2.0.3",
+    "requests==2.31.0",
+    "retry==0.9.2"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest==7.4.2",
+    "pre-commit==3.6.2"
 ]
 
 [project.scripts]

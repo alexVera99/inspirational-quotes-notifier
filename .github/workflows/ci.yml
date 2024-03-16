@@ -22,13 +22,10 @@ jobs:
       with:
         python-version: ${{ env.PYTHON_VERSION }}
 
-    - name: Install dependencies
+    - name: Install our module with dev dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install -r src/requirements.txt -r src/requirements-dev.txt
-
-    - name: Install our module
-      run: pip install src/.
+        pip install src/.[dev]
 
     - name: Test with pytest
       run: |
