@@ -1,8 +1,10 @@
 import pytest
-from inspi_quote_notifier.quotes.application.validator import DataValidator
+from inspi_quote_notifier.quotes.application.validators.base_validator import (
+    BaseValidator,
+)
 from inspi_quote_notifier.quotes.domain.quote import Quote
 
-validator = DataValidator()
+validator = BaseValidator()
 
 
 def test_validate():
@@ -22,16 +24,6 @@ def test_validate():
     ],
 )
 def test_validate_quote_empty(quote):
-    result = validator.validate(quote)
-
-    assert not result
-
-
-def test_validate_quote_text_larger_than_max_chars():
-    text = "a" * (validator.max_size_quote + 1)
-
-    quote = Quote("Some author", text)
-
     result = validator.validate(quote)
 
     assert not result
