@@ -14,5 +14,5 @@ def test_main(mock_create_notifier: Mock, mock_api_reader: Mock):
 
     main()
 
-    mock_api_reader_instance.get_one_quote.assert_called_once_with(True)
+    mock_api_reader_instance.get_one_quote.assert_called_once_with()
     mock_create_notifier.return_value.notify.assert_called_once_with(quote)
