@@ -3,10 +3,10 @@ from __future__ import annotations
 import logging
 import random
 
-from inspi_quote_notifier.quotes.application.validator import DataValidator
 from inspi_quote_notifier.quotes.domain.consumer import QuoteConsumer
 from inspi_quote_notifier.quotes.domain.exceptions import QuoteNotFoundException
 from inspi_quote_notifier.quotes.domain.quote import Quote
+from inspi_quote_notifier.quotes.domain.validator import Validator
 
 DEFAULT_QUOTE_TEXT = "Play wisely the cards life gave you."
 DEFAULT_QUOTE_AUTHOR = "Yourself"
@@ -15,10 +15,10 @@ DEFAULT_QUOTE = Quote(DEFAULT_QUOTE_AUTHOR, DEFAULT_QUOTE_TEXT)
 
 
 class QuoteGetter:
-    def __init__(self, consumer: QuoteConsumer) -> None:
+    def __init__(self, consumer: QuoteConsumer, validator: Validator) -> None:
         self.consumer = consumer
         self.max_retries_to_get_random_quote = 10
-        self.validator = DataValidator()
+        self.validator = validator
         self.logger = logging.getLogger(QuoteGetter.__name__)
 
     def get_quote(self) -> Quote:
