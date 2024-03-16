@@ -6,7 +6,7 @@ build-backend = "hatchling.build"
 name = "inspi_quote_notifier"
 version = "0.0.1"
 authors = [
-  { name="Alexander Vera", email="alexanderjoel.vera99@gmail.com" }
+  { name="Alexander Vera" }
 ]
 description = "Inspirational quotes notifier"
 readme = "README.md"
