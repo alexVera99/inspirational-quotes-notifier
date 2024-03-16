@@ -1,8 +1,8 @@
+import logging
 import random
 from typing import Optional
 
 import requests
-from inspi_quote_notifier.logger import Logger
 from inspi_quote_notifier.quotes.application.validator import DataValidator
 from inspi_quote_notifier.quotes.domain.quote import Quote
 from requests import RequestException
@@ -26,7 +26,7 @@ class ApiReader:
         self.max_num_requests = 10
 
         # Initializing the logger
-        self.logger = Logger()
+        self.logger = logging.getLogger(ApiReader.__name__)
 
         # Data validator
         self.validator = DataValidator(default_author)
@@ -36,8 +36,8 @@ class ApiReader:
         # API url
         self.api_url = api_url
 
-    def get_one_quote(self, debug: bool = False) -> Quote:
-        quotes = self.read_quotes_from_api(debug)
+    def get_one_quote(self) -> Quote:
+        quotes = self.read_quotes_from_api()
 
         if quotes is None:
             return ApiReader.DEFAULT_QUOTE
@@ -56,29 +56,23 @@ class ApiReader:
             if len(validated_quote.text) <= self.max_size_quote:
                 return validated_quote
 
-        if debug:
-            self.logger.write_to_log_file(
-                "Could not obtain a proper quote from the ones provided by the API"
-            )
+        self.logger.debug(
+            "Could not obtain a proper quote from the ones provided by the API"
+        )
 
         return ApiReader.DEFAULT_QUOTE
 
-    def read_quotes_from_api(self, debug: bool = False) -> Optional[list[Quote]]:
+    def read_quotes_from_api(self) -> Optional[list[Quote]]:
         for num_requests in range(1, self.max_num_requests + 1):
             try:
                 quotes = self.get_quotes()
                 if quotes is not None:
                     return quotes
 
-                if debug:
-                    message_log = "Number of requests: " + str(num_requests) + "\n"
-                    self.logger.write_to_log_file(message_log)
+                self.logger.debug(f"Number of requests: {num_requests}")
 
             except RequestException as e:
-                if debug:
-                    self.logger.write_to_log_file(
-                        "Could not retrieve quotes from" f"API due to {e}"
-                    )
+                self.logger.error(f"Could not retrieve quotes from API due to {e}")
 
         return None
 
