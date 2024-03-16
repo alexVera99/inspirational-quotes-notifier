@@ -31,7 +31,7 @@ repos:
     args: [ --disallow-untyped-defs, --disallow-incomplete-defs,
             --disallow-untyped-calls, --ignore-missing-imports]
     exclude: tests
-    additional_dependencies: [types-PyYAML, types-requests]
+    additional_dependencies: [types-PyYAML, types-requests, types-retry]
 
 - repo: https://github.com/pre-commit/pygrep-hooks
   rev: v1.10.0

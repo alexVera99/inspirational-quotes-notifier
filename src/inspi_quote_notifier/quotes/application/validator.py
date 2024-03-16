@@ -2,18 +2,21 @@ from inspi_quote_notifier.quotes.domain.quote import Quote
 
 
 class DataValidator:
-    def __init__(self, default_author: str = "Unknown"):
-        self.default_author = default_author
+    def __init__(self, max_size_quote: int = 84):
+        # Max size of the quote to be displayed correctly in the notifications
+        self.max_size_quote = max_size_quote
 
-    def validate(self, quote: Quote) -> Quote:
+    def validate(self, quote: Quote) -> bool:
         text: str = quote.text
         author: str = quote.author
 
         if text is None:
-            text = ""
-            author = ""
+            return False
 
         if author is None:
-            author = self.default_author
+            return False
 
-        return Quote(author, text)
+        if len(text) >= self.max_size_quote:
+            return False
+
+        return True
