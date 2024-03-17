@@ -18,7 +18,8 @@ classifiers = [
 dependencies = [
     "pync==2.0.3",
     "requests==2.31.0",
-    "retry==0.9.2"
+    "retry==0.9.2",
+    "schedule==1.2.1"
 ]
 
 [project.optional-dependencies]
