@@ -26,7 +26,7 @@ def test_main(
 
     mock_scheduler_instance = mock_scheduler.return_value
     mock_scheduler_instance.schedule_every_minute.assert_called_once_with(
-        notify_quote, (mock_quote_getter_instance, mock_notifier_instance)
+        notify_quote, mock_quote_getter_instance, mock_notifier_instance
     )
     mock_scheduler_instance.start.assert_called_once()
 

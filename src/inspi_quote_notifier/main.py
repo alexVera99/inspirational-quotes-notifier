@@ -23,7 +23,7 @@ def main() -> None:
     quote_getter = QuoteGetter(consumer, validator)
 
     scheduler = Scheduler()
-    scheduler.schedule_every_minute(notify_quote, (quote_getter, notifier))
+    scheduler.schedule_every_minute(notify_quote, quote_getter, notifier)
     scheduler.start()
 
 
