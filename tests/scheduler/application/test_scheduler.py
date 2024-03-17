@@ -14,7 +14,7 @@ def test_schedule_every_hour(mock_schedule: Mock):
 
     mock_schedule.every.return_value.hour.at.assert_called_once_with(":00")
     mock_schedule.every.return_value.hour.at.return_value.do.assert_called_once_with(
-        dummy_function, (argument,), {}
+        dummy_function, argument
     )
 
 
@@ -27,7 +27,7 @@ def test_schedule_every_minute(mock_schedule: Mock):
 
     mock_schedule.every.return_value.minute.at.assert_called_once_with(":00")
     mock_schedule.every.return_value.minute.at.return_value.do.assert_called_once_with(
-        dummy_function, (argument,), {}
+        dummy_function, argument
     )
 
 
