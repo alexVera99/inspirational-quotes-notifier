@@ -1,4 +1,6 @@
 import logging
+from argparse import ArgumentParser
+from dataclasses import dataclass
 
 from inspi_quote_notifier.logging import configure_logging
 from inspi_quote_notifier.notifications.factory import create_notifier
@@ -14,6 +16,8 @@ from inspi_quote_notifier.scheduler.application.scheduler import Scheduler
 
 
 def main() -> None:
+    args = parse_args()
+
     configure_logging()
 
     notifier = create_notifier()
@@ -23,8 +27,34 @@ def main() -> None:
     quote_getter = QuoteGetter(consumer, validator)
 
     scheduler = Scheduler()
-    scheduler.schedule_every_minute(notify_quote, quote_getter, notifier)
-    scheduler.start()
+
+    if args.every_hour:
+        scheduler.schedule_every_hour(notify_quote, quote_getter, notifier)
+        scheduler.start()
+    elif args.every_minute:
+        scheduler.schedule_every_minute(notify_quote, quote_getter, notifier)
+        scheduler.start()
+    else:
+        notify_quote(quote_getter, notifier)
+
+
+@dataclass
+class Arguments:
+    every_hour: bool
+    every_minute: bool
+
+
+def parse_args() -> Arguments:
+    parser = ArgumentParser(
+        prog="Inspirational Quotes Notifier", description="Notify inspirational quotes."
+    )
+
+    parser.add_argument("--every-hour", action="store_true")
+    parser.add_argument("--every-minute", action="store_true")
+
+    raw_args = parser.parse_args()
+
+    return Arguments(raw_args.every_hour, raw_args.every_minute)
 
 
 def notify_quote(quote_getter: QuoteGetter, notifier: Notifier) -> None:
