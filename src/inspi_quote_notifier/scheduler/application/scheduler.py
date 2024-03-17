@@ -26,11 +26,11 @@ class Scheduler:
 
     def schedule_every_hour(self, job: Callable, *args: Any, **kwargs: Any) -> None:
         self.time_unit = TimeUnit.HOUR
-        schedule.every().hour.at(":00").do(job, args, kwargs)
+        schedule.every().hour.at(":00").do(job, *args, **kwargs)
 
     def schedule_every_minute(self, job: Callable, *args: Any, **kwargs: Any) -> None:
         self.time_unit = TimeUnit.MINUTE
-        schedule.every().minute.at(":00").do(job, args, kwargs)
+        schedule.every().minute.at(":00").do(job, *args, **kwargs)
 
     def start(self) -> None:
         while True:
