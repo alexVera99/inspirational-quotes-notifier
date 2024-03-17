@@ -9,11 +9,12 @@ from inspi_quote_notifier.scheduler.domain.time_unit import TimeUnit
 def test_schedule_every_hour(mock_schedule: Mock):
     scheduler = Scheduler()
 
-    scheduler.schedule_every_hour(dummy_function)
+    argument = "hello"
+    scheduler.schedule_every_hour(dummy_function, argument)
 
     mock_schedule.every.return_value.hour.at.assert_called_once_with(":00")
     mock_schedule.every.return_value.hour.at.return_value.do.assert_called_once_with(
-        dummy_function
+        dummy_function, (argument,), {}
     )
 
 
@@ -21,11 +22,12 @@ def test_schedule_every_hour(mock_schedule: Mock):
 def test_schedule_every_minute(mock_schedule: Mock):
     scheduler = Scheduler()
 
-    scheduler.schedule_every_minute(dummy_function)
+    argument = "hello"
+    scheduler.schedule_every_minute(dummy_function, argument)
 
     mock_schedule.every.return_value.minute.at.assert_called_once_with(":00")
     mock_schedule.every.return_value.minute.at.return_value.do.assert_called_once_with(
-        dummy_function
+        dummy_function, (argument,), {}
     )
 
 
@@ -80,5 +82,5 @@ def test__get_seconds_until_next_execution_with_minute(
     assert expected_seconds + 2 == seconds
 
 
-def dummy_function():
-    pass
+def dummy_function(argument: str):
+    print(argument)
