@@ -4,7 +4,7 @@ LOG_FILENAME = "inspi_notifier.log"
 LOG_FORMAT = (
     "%(asctime)s - %(levelname)s - %(name)s - %(filename)s:%(lineno)d: %(message)s"
 )
-LOG_LEVEL = logging.INFO
+LOG_LEVEL = logging.DEBUG
 
 
 def configure_logging() -> None:
