@@ -12,11 +12,10 @@ from inspi_quote_notifier.quotes.infrastructure.type_fit_consumer import (
 )
 from inspi_quote_notifier.scheduler.application.scheduler import Scheduler
 
-configure_logging()
-logger = logging.getLogger("main")
-
 
 def main() -> None:
+    configure_logging()
+
     notifier = create_notifier()
     validator = create_validator_chain()
 
@@ -29,7 +28,10 @@ def main() -> None:
 
 
 def notify_quote(quote_getter: QuoteGetter, notifier: Notifier) -> None:
+    logger = logging.getLogger("notify_quote")
+
     quote = quote_getter.get_quote()
+
     logger.debug(f"Notifying the following quote: {quote}")
 
     notifier.notify(quote)
